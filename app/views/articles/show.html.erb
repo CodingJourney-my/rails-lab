@@ -20,9 +20,9 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -60%);
     width: 80%;
-    height: 1000px;
+    height: 80vh;
     border: 3px solid #000;
   }
   .msform {
@@ -33,30 +33,6 @@
     display: none;
   }
 </style>
-
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const modal = document.getElementById('modal');
-    
-    modal.addEventListener('shown.bs.modal', (event) => {
-      const form = document.querySelector('.msform');
-      
-      window.addEventListener('message', (event) => {
-        if (event.origin !== 'https://forms.office.com') return;
-
-        try {
-          const message = JSON.parse(event.data);
-
-          if (message.height) {
-            form.style.height = message.height + 'px';
-          }
-        } catch (error) {
-          console.error('Error parsing message', error);
-        }
-      });
-    });
-  });
-</script>
 
 <script>
   const modal = document.getElementById('modal')
