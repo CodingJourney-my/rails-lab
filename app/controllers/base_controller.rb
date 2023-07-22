@@ -1,2 +1,2 @@
-class AuthController < ApplicationController
+class BaseController < ApplicationController
 end

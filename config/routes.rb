@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   resources :users
   resources :articles
+  namespace :user do
+    resources :video_views
+  end
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'

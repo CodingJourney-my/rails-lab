@@ -7,6 +7,22 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  # 渡されたユーザーでログインする
+  def log_in(user)
+    session[:user_id] = user.id
+  end
+
+  # ユーザーがログインしていればtrue、その他ならfalseを返す
+  def logged_in?
+    !@current_user.nil?
+  end
+
+  # 現在のユーザーをログアウトする
+  def log_out
+    session.delete(:user_id)
+    @current_user = nil
+  end
+
   # unless Rails.env.development?
     rescue_from ActiveRecord::RecordNotFound,   with: :render_404
     rescue_from ActionController::RoutingError do |exception|

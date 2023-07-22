@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_many :artiles
+  has_many :articles
 
   has_secure_password
 

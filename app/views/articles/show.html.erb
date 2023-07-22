@@ -1,22 +1,42 @@
-<article class="form-container">
+<article class="wrapper">
   <h1><%= @article.title %></h1>
   <p><%= @article.content %></p>
 
   <button onclick="toggleModal()">Toggle!!</button>
 
   <div id="modal" class="msform-container hidden">
-    <iframe id="msform" class="msform" src="https://forms.office.com/Pages/ResponsePage.aspx?id=<%= @article.survey.form_id%>&embed=true" frameborder="0" allowfullscreen></iframe>
+    <iframe id="msform"
+            class="msform"
+            src="https://forms.office.com/Pages/ResponsePage.aspx?id=<%= @article.survey.uid%>&embed=true"
+            frameborder="0"
+            allowfullscreen>
+    </iframe>
   </div>
-  
+
+  <% @article.videos.each do |video| %>
+    <div class="video-container">
+      <iframe id="video"
+              data-video-id="<%= video.id %>"
+              src="https://player.vimeo.com/video/<%= video.uid %>"
+              style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+              frameborder="0"
+              allow="autoplay; fullscreen"
+              allowfullscreen>
+      </iframe>
+    </div>
+  <% end %>
+
 </article>
 
 <style>
-  .form-container {
+  .wrapper {
     position: relative;
-    width: 100%;
+    width: 95%;
+    margin: 0 auto;
     height: 100vh;
   }
   .msform-container {
+    z-index: 100;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -28,6 +48,13 @@
   .msform {
     width: 100%;
     height: 100%;
+  }
+  .video-container {
+    width: 100%;
+    height: 100vh;
+    margin: 0 auto;
+    position: relative;
+    padding-bottom: 56.25%;
   }
   .hidden {
     display: none;
@@ -42,7 +69,7 @@
 
   const toggleModal = () => {
     if (classList.contains('hidden')) {
-      form.src = "<%= j("https://forms.office.com/Pages/ResponsePage.aspx?id=#{@article.survey.form_id}&embed=true") %>";
+      form.src = "<%= j("https://forms.office.com/Pages/ResponsePage.aspx?id=#{@article.survey.uid}&embed=true") %>";
       classList.remove('hidden')
     } else {
       classList.add('hidden')
@@ -50,3 +77,11 @@
     }
   }
 </script>
+
+<% if @article.videos.present? %>
+  <script src="https://player.vimeo.com/api/player.js"></script>
+  <script type="module">
+    import { initializeVimeoPlayer } from "video_vimeo";
+    initializeVimeoPlayer();
+  </script>
+<% end %>
