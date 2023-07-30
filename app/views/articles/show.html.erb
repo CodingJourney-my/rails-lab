@@ -4,14 +4,16 @@
 
   <button onclick="toggleModal()">Toggle!!</button>
 
-  <div id="modal" class="msform-container hidden">
-    <iframe id="msform"
-            class="msform"
-            src="https://forms.office.com/Pages/ResponsePage.aspx?id=<%= @article.survey.uid%>&embed=true"
-            frameborder="0"
-            allowfullscreen>
-    </iframe>
-  </div>
+  <% if @article.survey.present? %>
+    <div id="modal" class="msform-container hidden">
+      <iframe id="msform"
+              class="msform"
+              src="https://forms.office.com/Pages/ResponsePage.aspx?id=<%= @article.survey.uid%>&embed=true"
+              frameborder="0"
+              allowfullscreen>
+      </iframe>
+    </div>
+  <% end %>
 
   <% @article.videos.each do |video| %>
     <div class="video-container">
@@ -69,7 +71,7 @@
 
   const toggleModal = () => {
     if (classList.contains('hidden')) {
-      form.src = "<%= j("https://forms.office.com/Pages/ResponsePage.aspx?id=#{@article.survey.uid}&embed=true") %>";
+      form.src = "<%= j("https://forms.office.com/Pages/ResponsePage.aspx?id=#{@article.survey&.uid}&embed=true") %>";
       classList.remove('hidden')
     } else {
       classList.add('hidden')

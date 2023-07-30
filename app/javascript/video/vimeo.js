@@ -20,18 +20,21 @@ export function initializeVimeoPlayer() {
 
       player.on('play', function() {
         intervalId = setInterval(function() {
+          console.log('10seconds')
           sendCurrentTimeToServer(player, videoId);
         }, 10000); // 10秒ごとに再生時間を取得し、サーバーに送信します
       });
   
       player.on('pause', function() {
+        console.log('pause')
         clearInterval(intervalId);
         sendCurrentTimeToServer(player, videoId);
       });
   
       player.on('ended', function() {
+        console.log('ended')
         clearInterval(intervalId);
-        sendCurrentTimeToServer(player, videoId);
+        moveNextVideo(videoId)
       });
   });
 
@@ -67,3 +70,6 @@ function sendCurrentTimeToServer(player, videoId) {
   });
 }
 
+const moveNextVideo = (videoId) => {
+  window.location.href = `/articles/${Number(videoId)+1}`;
+}
