@@ -2,6 +2,11 @@ class ArticlesController < ApplicationController
 
   def index
     @articles = Article.all.includes(:videos, :survey)
+    @durations = @articles.map do |article|
+      video = article.videos.first
+      api = Vimeo::Api.new(video.uid)
+      duration = api.get_video_duration
+    end
   end
 
   def show
