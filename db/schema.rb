@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_22_092411) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_12_025515) do
   create_table "article_surveys", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.text "uid"
@@ -45,6 +45,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_22_092411) do
     t.index ["recorded_on"], name: "index_records_on_recorded_on", unique: true
   end
 
+  create_table "user_profiles", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "name"
+    t.integer "gender"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_profiles_on_user_id"
+  end
+
   create_table "user_video_views", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "video_id"
@@ -56,7 +65,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_22_092411) do
   end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "name"
     t.string "email"
     t.string "password_digest"
     t.datetime "created_at", null: false

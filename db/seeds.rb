@@ -7,14 +7,20 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 user_data = {
-  name: 'テスト太郎',
   email: 'user@example.com',
-  password: 'aaaaaaaa'
+  password: 'aaaaaaaa',
+  profile: {
+    name: 'テスト太郎',
+    gender: 'male'
+  }
 }
+
+profile_data = user_data.delete(:profile)
 
 user_email = user_data.delete(:email)
 user = User.find_or_initialize_by(email: user_email)
 user.assign_attributes(user_data)
+user.build_profile(profile_data)
 user.save!
 
 p user
