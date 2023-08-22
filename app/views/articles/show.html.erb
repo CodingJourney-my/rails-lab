@@ -2,7 +2,7 @@
   <h1><%= @article.title %></h1>
   <p><%= @article.content %></p>
 
-  <button onclick="toggleModal()">Toggle!!</button>
+  <button onclick="toggleModal()">Open survey modal!!</button>
 
   <% if @article.survey.present? %>
     <div id="modal" class="msform-container hidden">

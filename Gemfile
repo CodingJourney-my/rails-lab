@@ -73,3 +73,6 @@ end
 
 # for security
 gem 'rack-attack'
+
+# for serialize
+gem 'active_model_serializers'
