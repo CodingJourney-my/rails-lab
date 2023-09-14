@@ -134,6 +134,9 @@ GEM
     nokogiri (1.13.9)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
+    nokogiri (1.13.9-x86_64-linux)
+      racc (~> 1.4)
+    pg (1.5.4)
     puma (5.6.5)
       nio4r (~> 2.0)
     racc (1.6.0)
@@ -219,6 +222,7 @@ GEM
 
 PLATFORMS
   ruby
+  x86_64-linux
 
 DEPENDENCIES
   active_model_serializers
@@ -230,6 +234,7 @@ DEPENDENCIES
   faker
   importmap-rails
   mysql2 (>= 0.4.4, < 0.6.0)
+  pg
   puma (~> 5.0)
   rack-attack
   rails (~> 7.0.4)
