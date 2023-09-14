@@ -5,7 +5,8 @@ class Api::UsersController < BaseController
   def index
     @users = User.all
     count = @users.count
-    render_data @users, total: count
+    p @users
+    render json: @users, each_serializer: User::ApiSerializer, total: count
   end
 
   # GET /users/1 or /users/1.json
