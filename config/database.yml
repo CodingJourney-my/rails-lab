@@ -1,15 +1,16 @@
 default: &default
   adapter: postgresql
-  encoding: utf8mb4
+  encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: <%= ENV['MYSQL_USERNAME'] %>
-  password: <%= ENV['MYSQL_PASSWORD'] %>
-  socket: <%= ENV['MYSQL_SOCKET'] %>
 
 development:
   <<: *default
   adapter: mysql2
   database: app_development
+  encoding: utf8mb4
+  username: <%= ENV['MYSQL_USERNAME'] %>
+  password: <%= ENV['MYSQL_PASSWORD'] %>
+  socket: <%= ENV['MYSQL_SOCKET'] %>
 
 test:
   <<: *default
