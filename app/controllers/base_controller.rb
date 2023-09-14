@@ -1,4 +1,6 @@
 class BaseController < ApplicationController
+  include Error
+
   def render_data( data, **args )
     status = args.delete(:status)
     render json: args.merge(data: data), status: (status.presence || 200)
