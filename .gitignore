@@ -35,3 +35,5 @@
 /config/master.key
 
 .env.*local
+/app/assets/builds/*
+!/app/assets/builds/.keep
