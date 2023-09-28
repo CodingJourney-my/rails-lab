@@ -6,8 +6,10 @@
     const button = document.getElementById('goBackToOriginalTab');
     button.addEventListener('click', function() {
       const originalUrl = getCookie('referer');  // クッキーからURLを取得
+      console.log(originalUrl)
       if (originalUrl) {
-        window.opener.location.href = originalUrl;
+        const decodedUrl = decodeURIComponent(originalUrl);
+        window.opener.location.href = decodedUrl;
         window.close();  // 現在のタブを閉じる
       }
     });

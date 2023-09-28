@@ -1,6 +1,7 @@
 class RedirectBackController < ApplicationController
   def index
-    cookies[:referer] = { value: request.referer, domain: '.example.com' }
-    p request.referer, cookies[:referer]
+    puts CGI.unescape(request.referer)
+    cookies[:referer] = { value: CGI.unescape(request.referer) }
+    puts request.referer, cookies[:referer]
   end
 end
