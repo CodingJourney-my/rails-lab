@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :users
   resources :articles
   resources :basic_auth, only: [:index]
+  resources :redirect_back, only: [:index]
   namespace :user do
     resources :video_views
   end

@@ -3,7 +3,18 @@
     <nav>
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "Basic Authenticate", basic_auth_index_path %></li>
+        <li><a href="#" id="openNewTab">New Tab</a></li>
       </ul>
     </nav>
   </div>
 </footer>
+
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', function() {
+    const link = document.getElementById('openNewTab');
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.open('<%= redirect_back_index_path %>', '_blank');
+    });
+  });
+</script>

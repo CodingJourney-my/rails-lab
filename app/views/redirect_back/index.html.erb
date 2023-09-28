@@ -1,0 +1,22 @@
+<!-- app/views/your_view.html.erb -->
+<button id="goBackToOriginalTab">元のタブに戻る</button>
+
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', function() {
+    const button = document.getElementById('goBackToOriginalTab');
+    button.addEventListener('click', function() {
+      const originalUrl = getCookie('referer');  // クッキーからURLを取得
+      if (originalUrl) {
+        window.opener.location.href = originalUrl;
+        window.close();  // 現在のタブを閉じる
+      }
+    });
+  });
+
+  // クッキーから値を取得する関数
+  function getCookie(name) {
+    const value = "; " + document.cookie;
+    const parts = value.split("; " + name + "=");
+    if (parts.length === 2) return parts.pop().split(";").shift();
+  }
+</script>
