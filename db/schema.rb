@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_12_025515) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_29_061447) do
   create_table "article_surveys", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.text "uid"
@@ -35,6 +35,20 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_12_025515) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_articles_on_user_id"
+  end
+
+  create_table "categories", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "slug", null: false
+    t.string "name", null: false
+    t.string "note"
+    t.string "ancestry", null: false, collation: "utf8mb4_bin"
+    t.integer "public_status", default: 1, null: false
+    t.integer "status", limit: 1, default: 1, null: false
+    t.integer "ancestry_depth", default: 0
+    t.integer "children_count", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ancestry"], name: "index_categories_on_ancestry"
   end
 
   create_table "records", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|

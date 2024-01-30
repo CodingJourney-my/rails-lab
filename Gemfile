@@ -81,3 +81,5 @@ gem 'rack-attack'
 # for serialize
 gem 'active_model_serializers'
 gem "tailwindcss-rails", "~> 2.0"
+
+gem "ancestry"
