@@ -7,10 +7,16 @@ class Vimeo::Api
     @video_id = video_id
   end
 
-  def get_video_duration
+  def fetch_video_duration
     uri = Vimeo::Api.build_url("/videos/#{video_id}?fields=duration")
     res = request_execute(uri)
     res["duration"]
+  end
+
+  def fetch_thumbnail
+    uri = Vimeo::Api.build_url("/videos/#{video_id}?fields=pictures")
+    res = request_execute(uri)
+    res["pictures"]["base_link"]
   end
 
   def request_execute(uri)
