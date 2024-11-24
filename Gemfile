@@ -9,6 +9,8 @@ gem "rails", "~> 7.0.4"
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
+gem 'mysql2', '>= 0.4.4', '< 0.6.0'
+
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
 
@@ -49,8 +51,6 @@ group :development, :test do
 end
 
 group :development do
-  gem 'mysql2', '>= 0.4.4', '< 0.6.0'
-
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
 
@@ -83,3 +83,5 @@ gem 'active_model_serializers'
 gem "tailwindcss-rails", "~> 2.0"
 
 gem "ancestry"
+
+gem "dotenv-rails"
