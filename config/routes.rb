@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root 'articles#index'
 
   namespace :api do
-    resources :users
+    resources :users, only: [:index, :show]
   end
 
   resources :users
@@ -16,6 +16,6 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
 
-  get '*not_found' => 'application#routing_error'
-  post '*not_found' => 'application#routing_error'
+  get  '*not_found', to: 'application#routing_error'
+  post '*not_found', to: 'application#routing_error'
 end

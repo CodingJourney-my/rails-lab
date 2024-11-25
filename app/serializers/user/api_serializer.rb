@@ -1,4 +1,4 @@
-class User::ApiSerializer < ActiveModel::Serializer
-  attributes :id
-  attributes :email
+class User::ApiSerializer < ApplicationSerializer
+  attribute :id
+  attribute :email
 end
