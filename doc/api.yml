@@ -1,0 +1,40 @@
+---
+openapi: 3.0.3
+info:
+  description: |
+    ## 用語
+
+    ### Business
+
+    #### Resource
+
+    ### API
+
+    - `Authenticated Token`: `email` / `password` の認証を通過したことを示すトークン。ログイン成功時に払い出されます。
+    - `Authorized Token`: リソースへのアクセス権を認可されたことを示すトークン。ログイン完了時に払い出され、APIや保護されたリソースへのアクセスに使用されます。
+
+    ## エラーコード
+
+    以下はapi全体的に返されることのあるエラーの一覧です。
+
+    |http status|code|description|
+    |----|----|----|
+    |400|`input_invalid`|バリデーションエラーなど不正なデータ入力|
+    |401|`unauthorized`|操作権限がありません|
+    |401|`token_unauthorized`|トークン認証に失敗しました|
+    |401|`token_expired`|トークンが期限切れです|
+    |401|`verification_failed`|認証に失敗しました|
+    |401|`verification_expired`|認証が期限切れです|
+    |401|`verification_invalidated`|認証試行超過のため認証番号が無効化されました|
+    |401|`authentication_failed`|認証に失敗しました|
+    |401|`need_to_accept_new_terms_of_service`|規約が更新されました|
+    |403|`authorization_violated`|認証情報が不正です|
+    |404|`not_found`|データが存在しません|
+    |500|`unknown_error`|バグなどエラーハンドリングされていない未定義エラーです|
+    |503|`under_maintenance`|メンテナンス中です|
+  version: 1.0.0
+  title: Test Api
+servers:
+- url: http://localhost:3000
+  description: Test API
+paths: {}

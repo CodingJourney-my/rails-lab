@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
 
+  get "/docs/api", to: "docs#index", filename: "api"
+
   get  '*not_found', to: 'application#routing_error'
   post '*not_found', to: 'application#routing_error'
 end

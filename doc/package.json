@@ -1,0 +1,14 @@
+{
+  "name": "doc",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "redoc": "^2.0.0-rc.45",
+    "redoc-cli": "^0.10.2"
+  },
+  "scripts": {
+    "serve:api": "redoc-cli serve api.yml --watch",
+    "build:api": "redoc-cli bundle api.yml  --output ./html/api.html"
+  }
+}
