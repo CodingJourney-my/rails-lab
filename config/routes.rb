@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   root 'articles#index'
 
   namespace :api do
-    resources :users, only: [:index, :show]
+    namespace :v1 do
+      resources :users, only: [:index, :show]
+    end
   end
 
   resources :users

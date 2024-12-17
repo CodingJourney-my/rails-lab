@@ -11,7 +11,7 @@ class Openapi::Api
   OPTIONS = {
     "default" => {
       # origin: 'https://api.staging.knowledgemixer.com',
-      origin: 'http://127.0.0.1:3300',
+      origin: 'http://localhost:3000',
       content_type: 'application/json',
     },
   }
@@ -125,7 +125,27 @@ class Openapi::Api
     )
 
     def run
+      req, res = @notoken.run(:get, "/api/v1/users") do |task|
+        task.route.description = <<~EOS
+          ユーザー一覧を取得します。
+        EOS
+        task.route.parameters += task.openapi_parameters(:application)
+        task.route.format('200', 'application/json').replace_schema(
+          User::ApiSerializer.openapi_schema, :data
+        )
+        # task.route.request_body = Openapi::RequestBody.build_from_example(request_body, content_type: 'application/json')
+      end
 
+      req, res = @notoken.run(:get, "/api/v1/users/1") do |task|
+        task.route.description = <<~EOS
+          ユーザー詳細を取得します。
+        EOS
+        task.route.parameters += task.openapi_parameters(:application)
+        task.route.format('200', 'application/json').replace_schema(
+          User::ApiSerializer.openapi_schema, :data
+        )
+        # task.route.request_body = Openapi::RequestBody.build_from_example(request_body, content_type: 'application/json')
+      end
     end
 
   end

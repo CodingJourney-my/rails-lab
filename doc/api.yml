@@ -37,4 +37,79 @@ info:
 servers:
 - url: http://localhost:3000
   description: Test API
-paths: {}
+paths:
+  "/api/v1/users":
+    get:
+      summary: api v1 users index
+      description: 'ユーザー一覧を取得します。'
+      consumes: []
+      produces:
+      - application/json
+      parameters:
+      - 
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total:
+                    type: number
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        email:
+                          nullable: true
+                          type: string
+                      required:
+                      - id
+                      - email
+              example:
+                total: 1
+                data:
+                - id: 1
+                  email: user1@example.com
+  "/api/v1/users/:id":
+    get:
+      summary: api v1 users show
+      description: 'ユーザー詳細を取得します。'
+      consumes: []
+      produces:
+      - application/json
+      parameters:
+      - name: id
+        schema:
+          type: integer
+        example: 250
+        in: path
+        required: true
+      - 
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      email:
+                        nullable: true
+                        type: string
+                    required:
+                    - id
+                    - email
+              example:
+                data:
+                  id: 1
+                  email: user1@example.com
