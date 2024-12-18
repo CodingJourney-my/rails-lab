@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   root 'articles#index'
 
+  if Rails.env.development? || Rails.env.staging?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
+
   namespace :api do
     namespace :v1 do
       resources :users, only: [:index, :show]

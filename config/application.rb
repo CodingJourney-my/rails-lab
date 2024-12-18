@@ -21,8 +21,10 @@ module SampleApp
 
     config.generators do |g|
       g.test_framework :rspec
-    end    
+    end
 
     config.middleware.use Rack::Attack
+
+    config.active_job.queue_adapter = :delayed_job
   end
 end

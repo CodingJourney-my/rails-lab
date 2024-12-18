@@ -59,6 +59,7 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+  gem 'letter_opener_web'
 end
 
 group :test do
@@ -85,3 +86,5 @@ gem "ancestry"
 gem "dotenv-rails"
 
 gem "net-http"
+
+gem 'delayed_job_active_record'
