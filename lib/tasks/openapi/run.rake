@@ -8,7 +8,7 @@ namespace :openapi do
     task check: :environment do
       runner = Openapi::Api.new('default')
       runner.run
-      puts runner.openapi.to_yaml
+      # puts runner.openapi.to_yaml
     end
   end
 end
